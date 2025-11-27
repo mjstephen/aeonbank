@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AEON Bank – Mock Landing Page</title>
+  <meta name="description" content="Purely fictional mock landing page inspired by a Malaysian digital bank. Not affiliated with the real AEON Bank.">
+  <style>
+    :root {
+      --accent: #6f1d8f;
+      --accent-soft: #f5e9ff;
+      --accent-strong: #4b0f66;
+      --bg: #f5f5f7;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid rgba(229,231,235,0.8);
+    }
+    .nav-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: radial-gradient(circle at 20% 0%, #ffb4e6 0, #eb4c6b 40%, #6f1d8f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: var(--accent-strong);
+    }
+    .nav-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .btn-outline {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--accent-strong);
+      background: #fff;
+      font-weight: 600;
+    }
+    .btn-primary {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(111,29,143,0.28);
+    }
+
+    /* HERO */
+    .hero-section {
+      background: radial-gradient(circle at top left, #fce7f3 0, #f5f5ff 30%, #f5f5f7 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 20px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(111,29,143,0.06);
+      color: var(--accent-strong);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.15;
+      margin: 0 0 10px;
+    }
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .hero-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .hero-list span::before {
+      content: "•";
+      margin-right: 7px;
+      color: var(--accent);
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 20px 45px rgba(15,23,42,0.12);
+      border: 1px solid rgba(255,255,255,0.8);
+      position: relative;
+    }
+    .hero-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .hero-balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+    .hero-balance-amount {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .hero-balance-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 11px;
+    }
+    .hero-metric {
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+    }
+    .hero-metric span {
+      display: block;
+    }
+    .hero-metric span.value {
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .hero-badges {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .os-badge {
+      flex: 1;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .os-badge strong {
+      font-size: 11px;
+    }
+
+    /* FEATURES */
+    .content-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 26px 20px 34px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .section-header p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 420px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 14px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .feature-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent-strong);
+      margin-bottom: 4px;
+    }
+    .feature-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+    .feature-card p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .feature-meta {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    /* STRIP */
+    .strip {
+      margin-top: 24px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .strip strong { font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #111827;
+      color: #e5e7eb;
+      margin-top: 10px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 16px;
+      font-size: 12px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    .footer-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .footer-link {
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+    .footer-link:hover { color: #e5e7eb; }
+    .footer-disclaimer {
+      color: #9ca3af;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid rgba(55,65,81,0.9);
+      padding-top: 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-card { max-width: 360px; margin: 0 auto; }
+      .feature-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hero-inner {
+        padding-top: 24px;
+      }
+      .feature-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .footer-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="nav-wrap">
+      <div class="logo">
+        <div class="logo-badge">A</div>
+        <div>
+          <div>AEON Bank</div>
+          <div style="font-size:11px; color:var(--muted);">Mock digital banking site</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#personal">Personal</a></li>
+          <li><a href="#financing">Financing</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#help">Help</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <a class="btn-outline" href="#login">Login</a>
+        <button class="btn-primary" onclick="alert('Mock only – no real application')">Open account</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Mock only · Not a real bank</div>
+        <h1 class="hero-title">A fresh way to <span class="highlight">bank in Malaysia</span>.</h1>
+        <p class="hero-subtitle">
+          This page is a <strong>non‑official mock-up</strong> created for learning, UX exploration and prototyping. 
+          No real banking products are offered here.
+        </p>
+        <div class="hero-list">
+          <span>Digital savings &amp; everyday accounts</span>
+          <span>Simple personal financing journeys</span>
+          <span>Shariah-inspired product layout (example only)</span>
+        </div>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="alert('Demo only – no production flow')">Get started in minutes</button>
+          <a class="btn-outline" href="#personal">Explore mock products</a>
+        </div>
+        <div class="hero-note">
+          This interface is designed to imitate the <em>feel</em> of a modern Malaysian digital bank homepage without
+          copying the source website’s code or wording.
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Sample digital account card">
+        <div class="hero-card-label">Sample Everyday Account</div>
+        <div class="hero-balance">
+          <div>
+            <div style="font-size:11px; color:var(--muted);">Available balance</div>
+            <div class="hero-balance-amount">RM 12,480.25</div>
+          </div>
+          <div class="hero-balance-chip">
+            <span style="font-size:9px;">▲</span>
+            <span>+RM 220 today</span>
+          </div>
+        </div>
+        <div class="hero-metrics">
+          <div class="hero-metric">
+            <span>Monthly spend</span>
+            <span class="value">RM 3,240</span>
+          </div>
+          <div class="hero-metric">
+            <span>Insights</span>
+            <span class="value">8 new tips</span>
+          </div>
+          <div class="hero-metric">
+            <span>Scheduled payments</span>
+            <span class="value">4 active</span>
+          </div>
+          <div class="hero-metric">
+            <span>Savings pockets</span>
+            <span class="value">3 goals</span>
+          </div>
+        </div>
+        <div class="hero-card-footer">
+          <span>Next payout: 28th of every month · Demo only</span>
+          <span style="font-weight:600;">•••• 9321</span>
+        </div>
+        <div class="hero-badges">
+          <div class="os-badge">
+            <span style="text-transform:uppercase;letter-spacing:.08em;font-size:9px;">Available on</span>
+            <strong>Mock App Store</strong>
+            <span style="color:var(--muted); font-size:10px;">Tap to preview UI only</span>
+          </div>
+          <div class="os-badge">
+            <span style="text-transform:uppercase;letter-spacing:.08em;font-size:9px;">Available on</span>
+            <strong>Mock Play Store</strong>
+            <span style="color:var(--muted); font-size:10px;">No real app is published</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PERSONAL BANKING / FEATURES -->
+  <main>
+    <section id="personal" class="content-section">
+      <div class="section-header">
+        <div>
+          <h2>Personal banking (mock)</h2>
+          <p>Illustrative tiles to show how savings, everyday accounts and goal‑based features could be displayed on a 
+          Malaysian digital bank homepage.</p>
+        </div>
+        <a href="#help" style="font-size:12px; color:var(--accent-strong);">View design notes →</a>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-tag">Savings</div>
+          <h3>Everyday Account</h3>
+          <p>Simple account UI with real‑time balance, spending insights and scheduled payments in one place.</p>
+          <div class="feature-meta">
+            <span>RM 0 monthly fee (mock)</span>
+            <span>View sample screen →</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Goals</div>
+          <h3>Savings Pockets</h3>
+          <p>Create named pockets (e.g. travel, emergency, family) and simulate auto‑contributions every month.</p>
+          <div class="feature-meta">
+            <span>Progress rings & timelines</span>
+            <span>Try it in Figma</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Insights</div>
+          <h3>Smart Spend View</h3>
+          <p>Group transactions into categories like groceries, bills and lifestyle. Data and categories are dummy only.</p>
+          <div class="feature-meta">
+            <span>Powered by placeholder data</span>
+            <span>See sample report</span>
+          </div>
+        </article>
+      </div>
+
+      <div id="financing" class="section-header" style="margin-top:26px;">
+        <div>
+          <h2>Financing journeys (mock)</h2>
+          <p>This section mimics a personal financing teaser area with short explanations. No real rates or offers are shown.</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-tag">Personal financing</div>
+          <h3>Quick illustration</h3>
+          <p>See how a financing calculator and simple application steps might be surfaced on a landing page.</p>
+          <div class="feature-meta">
+            <span>Tenure &amp; payment sliders</span>
+            <span>Prototype only</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Auto financing</div>
+          <h3>Car purchase flow</h3>
+          <p>Cards could highlight sample monthly instalments for different car price ranges (values are fictitious).</p>
+          <div class="feature-meta">
+            <span>For storyboard use</span>
+            <span>View journey</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Home</div>
+          <h3>Property affordability</h3>
+          <p>Mock UI for combining income, commitments and property price into a simple affordability overview.</p>
+          <div class="feature-meta">
+            <span>UX exploration only</span>
+            <span>Open wireframe</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="strip">
+        <div>
+          <strong>Important:</strong> This entire page is a <u>learning mock‑up</u> and is <u>not</u> operated by 
+          the real AEON Bank. Do not enter personal or financial data here.
+        </div>
+        <button class="btn-outline" onclick="alert('This is just a design demo, not a secure banking site.')">Why this disclaimer?</button>
+      </div>
+    </section>
+
+    <!-- CARDS / DIGITAL PAYMENTS -->
+    <section id="cards" class="content-section" style="padding-top:10px;">
+      <div class="section-header">
+        <div>
+          <h2>Cards &amp; digital payments (mock)</h2>
+          <p>Example of how debit cards, virtual cards and wallets could be surfaced on a homepage in card layout format.</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-tag">Debit</div>
+          <h3>Everyday debit card</h3>
+          <p>Simple card design with controls for online usage, overseas usage and ATM cash withdrawals.</p>
+          <div class="feature-meta">
+            <span>Toggle limits</span>
+            <span>View mock UI</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Virtual</div>
+          <h3>Virtual card</h3>
+          <p>Instant virtual card issuance for online purchases in prototypes, with dummy card numbers and expiry.</p>
+          <div class="feature-meta">
+            <span>Good for UX testing</span>
+            <span>Prototype only</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-tag">Wallets</div>
+          <h3>e-Wallet &amp; QR</h3>
+          <p>Space to show supported QR payment schemes, stored cards and simple transaction history previews.</p>
+          <div class="feature-meta">
+            <span>Supports mock DuitNow QR</span>
+            <span>Design reference</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="help">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">About this mock site</div>
+          <p class="footer-disclaimer">
+            This page is a <strong>fictional user interface</strong> built for practice and demonstrations. It is not
+            endorsed by, affiliated with, or maintained by AEON Bank (Malaysia) or any related entity. All product
+            names, rates, logos and flows on this page are placeholders.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Design sections</div>
+          <div class="footer-link">Hero &amp; positioning</div>
+          <div class="footer-link">Personal banking tiles</div>
+          <div class="footer-link">Financing journeys</div>
+          <div class="footer-link">Cards &amp; payments</div>
+        </div>
+        <div>
+          <div class="footer-title">What to change</div>
+          <div class="footer-link">Replace copy with your own</div>
+          <div class="footer-link">Swap colour palette</div>
+          <div class="footer-link">Connect to real APIs</div>
+          <div class="footer-link">Hook up analytics</div>
+        </div>
+        <div>
+          <div class="footer-title">Good to remember</div>
+          <p class="footer-disclaimer">
+            • Do not collect real customer data on mock sites.<br>
+            • Always obtain legal approval before using real branding.<br>
+            • Keep clear labels that the experience is a prototype.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Mock AEON Bank landing page – for personal / educational use only.</span>
+        <span>Built as HTML/CSS demo, no backend connected.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
